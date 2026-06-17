@@ -1,0 +1,158 @@
+<!-- Backdrop overlay - chỉ hiển thị trên mobile khi sidebar được mở -->
+@if (isOpen()) {
+<div
+  class="fixed inset-0 z-40 bg-black opacity-50 md:hidden"
+  (click)="onBackdropClick()"
+  aria-hidden="true"
+></div>
+}
+
+<!-- Sidebar với Angular class binding -->
+<aside
+  id="fb-left-sidebar"
+  [class]="
+    'fixed start-0 z-50 md:z-auto md:w-1/6 h-dvh md:h-[calc(100dvh-3rem)] bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 transition-transform duration-300 md:translate-x-0 md:flex md:flex-col ' +
+    (isOpen() ? 'translate-x-0' : '-translate-x-full')
+  "
+  [attr.aria-hidden]="!isOpen()"
+  aria-label="Left navigation"
+  role="dialog"
+  tabindex="-1"
+>
+  <!-- Content cuộn -->
+  <div class="flex-1 overflow-y-auto px-2 py-2 space-y-4 dark:text-white">
+    <!-- Primary nav -->
+    <nav class="space-y-1" aria-label="Primary">
+      <a
+        href="#"
+        class="flex items-center gap-3 h-10 px-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-600 transition"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          class="size-5"
+          fill="none"
+          stroke="currentColor"
+        >
+          <path stroke-width="2" d="M3 12l2-2 4 4 8-8 4 4" />
+        </svg>
+        <span class="text-sm font-medium">Home</span>
+      </a>
+
+      <a
+        href="#"
+        class="flex items-center gap-3 h-10 px-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-600 transition"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          class="size-5"
+          fill="none"
+          stroke="currentColor"
+        >
+          <path
+            stroke-width="2"
+            d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+          />
+        </svg>
+        <span class="text-sm font-medium">Friends</span>
+        <span
+          class="ml-auto text-xs px-2 py-0.5 rounded-full bg-blue-600 text-white"
+          >3</span
+        >
+      </a>
+
+      <a
+        href="#"
+        class="flex items-center gap-3 h-10 px-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-600 transition"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          class="size-5"
+          fill="none"
+          stroke="currentColor"
+        >
+          <path stroke-width="2" d="M3 9h18M3 15h18M7 9v12M17 9v12" />
+        </svg>
+        <span class="text-sm font-medium">Groups</span>
+      </a>
+    </nav>
+
+    <div class="border-t border-neutral-200 dark:border-neutral-800"></div>
+
+    <!-- Shortcuts -->
+    <section aria-label="Shortcuts" class="space-y-1">
+      <h3
+        class="px-2 text-xs font-semibold uppercase tracking-wide text-neutral-500"
+      >
+        Your Shortcuts
+      </h3>
+
+      <a
+        href="#"
+        class="flex items-center gap-3 h-10 px-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-600 transition"
+      >
+        <img
+          src="https://i.pravatar.cc/64?img=30"
+          class="size-7 rounded-md"
+          alt=""
+        />
+        <span class="text-sm">DNTU Groups</span>
+        <span
+          class="ml-auto inline-block size-2 rounded-full bg-blue-600"
+        ></span>
+      </a>
+
+      <button
+        type="button"
+        class="w-full flex items-center gap-3 h-10 px-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-600 transition"
+        data-hs-collapse='{"target":"#more-shortcuts"}'
+        aria-controls="more-shortcuts"
+        aria-expanded="false"
+      >
+        <div
+          class="size-7 rounded-md grid place-items-center bg-neutral-100 dark:bg-neutral-800"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            class="size-4"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+        </div>
+        <span class="text-sm font-medium">See more</span>
+      </button>
+
+      <div id="more-shortcuts" class="hs-collapse hidden w-full space-y-1">
+        <!-- thêm các item mở rộng -->
+        <a
+          href="#"
+          class="flex items-center gap-3 h-10 px-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-600 transition"
+        >
+          <img
+            src="https://i.pravatar.cc/64?img=45"
+            class="size-7 rounded-md"
+            alt=""
+          />
+          <span class="text-sm">Marketplace VN</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <div
+    class="shrink-0 px-3 py-3 border-t border-neutral-200 dark:border-neutral-800"
+  >
+    <div
+      class="text-[12px] leading-5 text-neutral-500 flex flex-wrap gap-x-3 gap-y-1"
+    >
+      <img
+        src="https://i.pravatar.cc/80?img=12"
+        alt=""
+        class="size-8 rounded-full"
+      />
+      <div class="font-semibold text-sm md:text-base truncate">Dung Le</div>
+    </div>
+  </div>
+</aside>
